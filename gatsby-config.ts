@@ -15,7 +15,7 @@ const config: GatsbyConfig = {
       "accessToken": "CtoQYK_5vlNSmOiXRjujzbocOCnk11n0sVch4_BcSxc",
       "spaceId": "jd9xo89qxrxc"
     }
-  }, "gatsby-plugin-image", "gatsby-plugin-sharp", "gatsby-transformer-sharp", "gatsby-plugin-postcss"]
+  }, "gatsby-plugin-image", "gatsby-plugin-sharp", "gatsby-transformer-sharp", "gatsby-plugin-postcss", "gatsby-plugin-react-helmet", "gatsby-plugin-netlify"]
 };
 
 export default config;
