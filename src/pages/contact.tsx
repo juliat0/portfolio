@@ -35,7 +35,7 @@ const AboutPage = () => {
   return (
     <div className="w-auto h-auto relative bg-gray-200 px-[25px] py-[50px] 2xl:px-[400px] md:px-[150px] h-screen">
       <Helmet>
-        <title>Contact Me - Julia Tomasson</title>
+        <title>Julia Tomasson - Contact Me</title>
         <meta name="description" content="Get in Touch With Me" />
       </Helmet>
       <h1 className="text-zinc-800 text-[22px] md:text-[40px] font-bold uppercase text-center">Contact</h1>
