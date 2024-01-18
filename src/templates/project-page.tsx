@@ -1,9 +1,26 @@
 // src/templates/project.js
 
 import React, { useState } from "react";
-import { graphql } from "gatsby";
+import { graphql, PageProps } from "gatsby";
+import { Helmet } from 'react-helmet';
 
-const ProjectTemplate = ({ data }: any) => {
+interface ProjectPageData {
+  contentfulProjects: {
+    name: string;
+    link: string;
+    description: {
+      description: string;
+    };
+    images: {
+      file: {
+        url: string;
+      };
+    }[];
+  };
+}
+
+
+const ProjectTemplate: React.FC<PageProps<ProjectPageData>> = ({ data }) => {
   const { name, description, images, link } = data.contentfulProjects;
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -21,7 +38,11 @@ const ProjectTemplate = ({ data }: any) => {
 
   return (
     <div className="bg-zinc-800 px-[25px] py-[50px] md:px-[150px] text-white h-screen">
-      <h1 className="text-[22px] md:text-[40px] font-bold uppercase text-center mb-12">{name}</h1>
+      <Helmet>
+        <title>{name} - Julia Tomasson</title>
+        <meta name="description" content={`Detailed Information About ${name}`}  />
+      </Helmet>
+      <h1 className="text-[22px] md:text-[40px] font-bold uppercase text-center mb-[20px]">{name}</h1>
       <div className="flex flex-col items-center justify-center py-[100px]">
         <div className="flex items-center justify-center mb-12">
           <button onClick={prevImage} className="text-white text-xl hover:text-rose-500">

@@ -8,15 +8,15 @@ import Contact from "./contact"
 
 const MyComponent = () => {
   
-  return <>
-  <div className="scroll-smooth">
-  <Header />
-  <Home />
-  <About />
-  <Projects />
-  <Contact />
-  </div>
-</>;
+  return (
+    <div className="scroll-smooth">
+      <Header />
+      <Home />
+      <About />
+      <Projects />
+      <Contact />
+    </div>
+  )
 };
 
 export default MyComponent;

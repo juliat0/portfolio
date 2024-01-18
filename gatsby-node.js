@@ -17,8 +17,8 @@ exports.createPages = async ({ graphql, actions }) => {
 
   result.data.allContentfulProjects.edges.forEach(({ node }) => {
     createPage({
-      path: `/project/${node.id}`,
-      component: path.resolve(`./src/templates/project.tsx`),
+      path: `/projects/${node.id}`,
+      component: path.resolve(`./src/templates/project-page.tsx`),
       context: {
         id: node.id,
       },
