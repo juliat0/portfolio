@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { Link } from 'gatsby';
 
 const Header = () => {
+    // control if the menu is open or closed
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  // Function to toggle the menu state (open or closed)
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -26,8 +28,3 @@ const Header = () => {
 };
 
 export default Header;
-
-{/* <Link to="/" className="text-white text-[32px] uppercase transform scale-60 hover:opacity-50 ease-in-out duration-300">Home</Link>
-<Link to="/#about" className="scroll-smooth text-white text-[32px] uppercase hover:opacity-50 ease-in-out duration-300">About</Link>
-<Link to="/#projects" className="text-white text-[32px] uppercase hover:opacity-50 ease-in-out duration-300">Projects</Link>
-<Link to="/#contact" className="text-white text-[32px] uppercase hover:opacity-50 ease-in-out duration-300">Contact</Link> */}

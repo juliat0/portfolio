@@ -2,7 +2,8 @@ import React from "react";
 import { useStaticQuery, graphql } from "gatsby"
 import { Helmet } from 'react-helmet';
 
-interface StartPageData {
+// Define the data structure for the Start Page
+interface HomePageData {
   contentfulStartPage: {
     name: string;
     greeting: string;
@@ -16,8 +17,9 @@ interface StartPageData {
   };
 }
 
-const MyComponent = () => {
-  const data: StartPageData   = useStaticQuery(graphql`
+const HomePage = () => {
+  // Use GraphQL to fetch data for the Start Page
+  const data: HomePageData   = useStaticQuery(graphql`
     query {
       contentfulStartPage {
         name
@@ -40,7 +42,7 @@ const MyComponent = () => {
     <Helmet>
       <title>Julia Tomasson - Home</title>
       <meta name="description" content="Welcome to My Portfolio - Explore My Work and Skills" />
-    </Helmet>
+      </Helmet>
     <div className="flex flex-col items-center pb-[80px] pt-[160px] md:pt-[40px]">
       {image && <img src={image.file.url} alt={name} className="w-[171px] md:w-[481px]"/>}
     </div>
@@ -54,4 +56,4 @@ const MyComponent = () => {
   )
 };
 
-export default MyComponent;
+export default HomePage;

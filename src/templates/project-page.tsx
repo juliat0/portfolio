@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { graphql, PageProps } from "gatsby";
 import { Helmet } from 'react-helmet';
 
+// Define the data structure for Project Page data
 interface ProjectPageData {
   contentfulProjects: {
     name: string;
@@ -21,15 +22,19 @@ interface ProjectPageData {
 
 
 const ProjectTemplate: React.FC<PageProps<ProjectPageData>> = ({ data }) => {
+  // Extract project data from GraphQL query response
   const { name, description, images, link } = data.contentfulProjects;
+  // State to track the current image index for image navigation
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
+  // Function to navigate to the next image
   const nextImage = () => {
     setCurrentImageIndex((prevIndex) =>
       prevIndex === images.length - 1 ? 0 : prevIndex + 1
     );
   };
 
+  // Function to navigate to the previous image
   const prevImage = () => {
     setCurrentImageIndex((prevIndex) =>
       prevIndex === 0 ? images.length - 1 : prevIndex - 1
@@ -45,6 +50,7 @@ const ProjectTemplate: React.FC<PageProps<ProjectPageData>> = ({ data }) => {
       <h1 className="text-[22px] md:text-[40px] font-bold uppercase text-center mb-[20px]">{name}</h1>
       <div className="flex flex-col items-center justify-center py-[100px]">
         <div className="flex items-center justify-center mb-12">
+          {/* Button to navigate to the previous image */}
           <button onClick={prevImage} className="text-white text-xl hover:text-rose-500">
             &lt;
           </button>
@@ -53,6 +59,7 @@ const ProjectTemplate: React.FC<PageProps<ProjectPageData>> = ({ data }) => {
             alt={name}
             className="h-[210px] mx-4"
           />
+          {/* Button to navigate to the next image */}
           <button onClick={nextImage} className="text-white text-xl hover:text-rose-500">
             &gt;
           </button>
@@ -64,6 +71,7 @@ const ProjectTemplate: React.FC<PageProps<ProjectPageData>> = ({ data }) => {
   );
 };
 
+// GraphQL query to fetch project data by ID
 export const query = graphql`
   query ProjectQuery($id: String!) {
     contentfulProjects(id: { eq: $id }) {

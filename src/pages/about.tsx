@@ -2,6 +2,7 @@ import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import { Helmet } from 'react-helmet';
 
+// Define the data structure for the About page
 interface AboutPageData {
   contentfulAboutMeDescriptionTextNode: {
     description: string;
@@ -36,6 +37,7 @@ interface AboutPageData {
 }
 
 const AboutPage: React.FC = () => {
+  // Use GraphQL to fetch data for the About page
   const data: AboutPageData = useStaticQuery(graphql`
     query AboutPageQuery {
       contentfulAboutMeDescriptionTextNode {
@@ -71,6 +73,7 @@ const AboutPage: React.FC = () => {
     }
   `);
 
+  // Extract data from the GraphQL query response
   const { contentfulAboutMeDescriptionTextNode, allContentfulSkills, allContentfulEducation, allContentfulWorkExperience } = data;
 
 
@@ -83,12 +86,14 @@ const AboutPage: React.FC = () => {
       <h1 className="text-zinc-800 text-[22px] md:text-[40px] font-bold uppercase text-center">About Me</h1>
       <div className="w-[30px] h-[0px] border-2 border-rose-300 m-auto mt-[15px]"></div>
       <p className="text-zinc-700 text-l md:text-xl font-normal text-center py-[25px] pb-[65px]">
+        {/* Display the description from Contentful */}
         {contentfulAboutMeDescriptionTextNode.description}
       </p>
       <h2 className="font-bold text-[22px] md:text-[32px] text-zinc-800 text-center pb-[20px]">
         Skills
       </h2>
       <div className="flex flex-wrap gap-[10px] md:gap-[12px] pb-[60px]">
+        {/* Map through and display skills */}
         {allContentfulSkills.edges.map(({ node }, index) => (
         <div className="w-[99px] h-[34px] md:h-[40px] md:w-[116px] bg-[#D9DECD] rounded-[7px]">
           <div key={index} className="text-center text-neutral-500 text-sm md:text-base font-semibold mt-[5px] md:mt-[8px]">
@@ -100,6 +105,7 @@ const AboutPage: React.FC = () => {
       <div className="md:flex md:justify-around md:pb-[90px] md:pt-[50px]">
         <div>
           <h2 className="text-zinc-800 text-[22px] md:text-[32px] font-bold text-center pt-[25px]">Education</h2>
+          {/* Map through and display education */}
           {allContentfulEducation.edges.map(({ node }, index) => (
           <div key={index} className="p-[20px]">
             <h3 className="font-bold text-zinc-800 text-base md:text-xl">{node.educationName}</h3>
@@ -110,6 +116,7 @@ const AboutPage: React.FC = () => {
         </div>
         <div>
           <h2 className="text-zinc-800 text-[22px] md:text-[32px] font-bold text-center pt-[25px]">Work Experience</h2>
+          {/* Map through and display work experience */}
           {allContentfulWorkExperience.edges.map(({ node }, index) => (
           <div key={index} className="p-[20px]">
             <h3 className="font-bold text-zinc-800 text-base md:text-xl">{node.title}</h3>
